@@ -1,3 +1,4 @@
+// Dashboard component for managing distributed system metrics
 // Luke Halley - St. Num: 2007180 - 09/10/2018
 // Dist. Systems Assignment 1 JDBC / MySQL File
 
