@@ -42,6 +42,7 @@ public class Dashboard extends JFrame {
 	private final String userName = "root";
 	private final String password = "";
 	private final String serverName = "localhost";
+// Initialize database connection pool and UI components
 	private final int portNumber = 3306;
 	private final String dbName = "test";
 	private final String empTbl = "employee";
