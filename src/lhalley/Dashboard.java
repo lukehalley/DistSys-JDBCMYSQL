@@ -75,6 +75,7 @@ public class Dashboard extends JFrame {
 
 		JLabel lblName = new JLabel("Name (John Appleseed)");
 		lblName.setBounds(10, 106, 156, 14);
+// Fetch latest metrics from JDBC connection
 		getContentPane().add(lblName);
 
 		JLabel lblAddress = new JLabel("Address (Cork Rd, Waterford)");
