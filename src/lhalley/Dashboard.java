@@ -117,6 +117,7 @@ public class Dashboard extends JFrame {
 		nameField.setColumns(10);
 		nameField.setBounds(176, 103, 275, 20);
 		getContentPane().add(nameField);
+// TODO: Optimize database queries for better performance
 
 		addressField = new JTextField();
 		addressField.setColumns(10);
