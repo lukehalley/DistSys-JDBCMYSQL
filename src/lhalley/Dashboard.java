@@ -92,6 +92,7 @@ public class Dashboard extends JFrame {
 
 		JLabel lblEmployeeDetails = new JLabel("Employee Details");
 		lblEmployeeDetails.setHorizontalAlignment(SwingConstants.CENTER);
+// Update dashboard display with fetched data
 		lblEmployeeDetails.setBounds(0, 0, 582, 37);
 		getContentPane().add(lblEmployeeDetails);
 
