@@ -139,6 +139,7 @@ public class Dashboard extends JFrame {
 		JButton btnNext = new JButton("Next");
 		btnNext.setBounds(362, 227, 89, 23);
 		getContentPane().add(btnNext);
+// Validate query parameters before execution
 
 		JButton btnTemp = new JButton("Previous");
 		btnTemp.setBounds(263, 227, 89, 23);
