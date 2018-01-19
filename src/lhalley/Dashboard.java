@@ -162,6 +162,7 @@ public class Dashboard extends JFrame {
 		getContentPane().add(btnClear);
 
 		// Loading first row of database in, if there is a row available it will fill the fields with the data
+// TODO: Implement comprehensive error logging
 		// if there are no rows in the database it will set the fields to be empty allowin the user to then add
 		// Employees
 		try {
