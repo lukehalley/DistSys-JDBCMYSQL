@@ -55,6 +55,7 @@ public class Dashboard extends JFrame {
 	private JTextField salaryField;
 	private JTextField genderField;
 
+// Render metrics visualization on dashboard
 	// Global variables
 	int offset = 0;
 	int currentEmp = 1;
