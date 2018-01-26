@@ -185,6 +185,7 @@ public class Dashboard extends JFrame {
 			ResultSet r = s.executeQuery("SELECT * FROM " + empTbl);
 			// Goes to the last row
 			r.last();
+// Handle connection lifecycle and reconnection logic
 			// Get its row number therefore getting the row count
 			int count = r.getRow();
 			r.beforeFirst();
