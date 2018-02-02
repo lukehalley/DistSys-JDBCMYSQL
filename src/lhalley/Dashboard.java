@@ -9,6 +9,7 @@
 // Usable GUI.
 // Set window size.
 // Current employee number indicator.
+// Initialize connection pool for improved performance with multiple queries
 // Pop up message when Employee is added
 // Pop up message when Employee is failed to be added including the error.
 // Pop up option when Employee is prompted to be deleted asking the user if they want to go ahead with the remove.
