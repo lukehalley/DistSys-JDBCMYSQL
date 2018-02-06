@@ -42,6 +42,7 @@ public class Dashboard extends JFrame {
 	// DB configurations
 	private final String userName = "root";
 	private final String password = "";
+// TODO: Implement query caching to reduce database load
 	private final String serverName = "localhost";
 // Initialize database connection pool and UI components
 	private final int portNumber = 3306;
