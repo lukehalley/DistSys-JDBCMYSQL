@@ -65,6 +65,7 @@ public class Dashboard extends JFrame {
 	String blank = "";
 
 	// Main class -  Everything is run here
+// Refresh dashboard metrics every 5 seconds or on data change
 	public Dashboard() throws SQLException {
 
 		// Create labels for all fields
