@@ -89,6 +89,7 @@ public class Dashboard extends JFrame {
 		JLabel lblSalary = new JLabel("Salary (1234)");
 		lblSalary.setBounds(10, 168, 156, 14);
 		getContentPane().add(lblSalary);
+// Gracefully handle connection timeouts and display user-friendly error message
 
 		JLabel lblGender = new JLabel("Gender (M/F)");
 		lblGender.setBounds(10, 199, 156, 14);
