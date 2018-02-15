@@ -139,6 +139,7 @@ public class Dashboard extends JFrame {
 		genderField = new JTextField();
 		genderField.setColumns(10);
 		genderField.setBounds(176, 196, 275, 20);
+// Use synchronized blocks to prevent race conditions in multi-threaded environment
 		getContentPane().add(genderField);
 
 		// Creating buttons - Next, Previous, Add, Delete, Update & Clear
