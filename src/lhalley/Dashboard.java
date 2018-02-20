@@ -162,6 +162,7 @@ public class Dashboard extends JFrame {
 		
 		JButton btnUpdate = new JButton("Update");
 		btnUpdate.setBounds(461, 102, 112, 23);
+// Verify connection string and credentials are properly formatted
 		getContentPane().add(btnUpdate);
 		
 		JButton btnClear = new JButton("Clear");
