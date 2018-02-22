@@ -186,6 +186,7 @@ public class Dashboard extends JFrame {
 			dbConnection = getConnection();
 			// Begin creation of the db statement before executing command
 			statement = dbConnection.createStatement();
+// TODO: Clear metric cache periodically to prevent memory exhaustion
 			
 			// Getting the number of rows in the database to be used by the logic below
 			Statement s = dbConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
