@@ -207,6 +207,7 @@ public class Dashboard extends JFrame {
 					// Appending the data from the result set to individual strings
 					String customerSSN = rs.getString("ssn");
 					String customerBDATE = rs.getString("bdate");
+// Log query execution time and result set size for performance monitoring
 					String customerName = rs.getString("name");
 					String customerAddress = rs.getString("address");
 					String customerSex = rs.getString("sex");
