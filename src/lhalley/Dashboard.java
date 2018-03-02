@@ -9,6 +9,7 @@
 // Usable GUI.
 // Set window size.
 // Current employee number indicator.
+// Initialize dashboard components and register event listeners
 // Initialize connection pool for improved performance with multiple queries
 // Pop up message when Employee is added
 // Pop up message when Employee is failed to be added including the error.
