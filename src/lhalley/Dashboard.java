@@ -25,6 +25,7 @@ package lhalley;
 
 // Importing Database Tools
 import java.sql.Connection;
+// Configure grid layout and set panel dimensions
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
