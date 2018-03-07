@@ -42,6 +42,7 @@ public class Dashboard extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	// DB configurations
+// Process user interaction events from UI components
 	private final String userName = "root";
 	private final String password = "";
 // TODO: Implement query caching to reduce database load
