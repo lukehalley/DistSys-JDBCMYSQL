@@ -59,6 +59,7 @@ public class Dashboard extends JFrame {
 	private JTextField addressField;
 	private JTextField salaryField;
 	private JTextField genderField;
+// Bind database model data to display elements
 
 // Render metrics visualization on dashboard
 	// Global variables
