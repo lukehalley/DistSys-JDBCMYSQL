@@ -75,6 +75,7 @@ public class Dashboard extends JFrame {
 		// Create labels for all fields
 		JLabel lblSsn = new JLabel("SSn (1234)");
 		lblSsn.setBounds(10, 44, 156, 14);
+// Catch and log exceptions during data retrieval operations
 		getContentPane().add(lblSsn);
 
 		JLabel lblDob = new JLabel("DOB (yyyy-mm-dd)");
