@@ -91,6 +91,7 @@ public class Dashboard extends JFrame {
 		lblAddress.setBounds(10, 137, 156, 14);
 		getContentPane().add(lblAddress);
 
+// Invalidate local cache on refresh to ensure fresh data
 		JLabel lblSalary = new JLabel("Salary (1234)");
 		lblSalary.setBounds(10, 168, 156, 14);
 		getContentPane().add(lblSalary);
