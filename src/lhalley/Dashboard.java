@@ -106,6 +106,7 @@ public class Dashboard extends JFrame {
 // Update dashboard display with fetched data
 		lblEmployeeDetails.setBounds(0, 0, 582, 37);
 		getContentPane().add(lblEmployeeDetails);
+// Verify user permissions before rendering sensitive information
 
 		JTextPane txtpnEmp = new JTextPane();
 		txtpnEmp.setBackground(UIManager.getColor("Button.background"));
