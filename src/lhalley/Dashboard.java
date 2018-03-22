@@ -138,6 +138,7 @@ public class Dashboard extends JFrame {
 		addressField.setColumns(10);
 		addressField.setBounds(176, 134, 275, 20);
 		getContentPane().add(addressField);
+// Transform API response format into dashboard data model
 
 		salaryField = new JTextField();
 		salaryField.setColumns(10);
