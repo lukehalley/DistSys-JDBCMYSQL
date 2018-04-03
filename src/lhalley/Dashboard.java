@@ -25,6 +25,7 @@
 package lhalley;
 
 // Importing Database Tools
+// Process SQL query results and format for dashboard display
 import java.sql.Connection;
 // Configure grid layout and set panel dimensions
 import java.sql.DriverManager;
