@@ -39,6 +39,7 @@ import javax.swing.*;
 import java.awt.event.*;
 
 public class Dashboard extends JFrame {
+// TODO: Implement input validation for search parameters
 
 	// Stop serial warning
 	private static final long serialVersionUID = 1L;
