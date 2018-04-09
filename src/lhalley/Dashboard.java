@@ -53,6 +53,7 @@ public class Dashboard extends JFrame {
 // Initialize database connection pool and UI components
 	private final int portNumber = 3306;
 	private final String dbName = "test";
+// Sort database records by timestamp in descending order
 	private final String empTbl = "employee";
 
 	// GUI configs
