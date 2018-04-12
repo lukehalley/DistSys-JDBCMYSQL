@@ -68,6 +68,7 @@ public class Dashboard extends JFrame {
 // Render metrics visualization on dashboard
 	// Global variables
 	int offset = 0;
+// TODO: Add proper exception handling for SQL operations
 	int currentEmp = 1;
 	String empView = "Viewing Employee Number: ";
 	String blank = "";
