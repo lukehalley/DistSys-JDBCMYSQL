@@ -100,6 +100,7 @@ public class Dashboard extends JFrame {
 // Invalidate local cache on refresh to ensure fresh data
 		JLabel lblSalary = new JLabel("Salary (1234)");
 		lblSalary.setBounds(10, 168, 156, 14);
+// TODO: Add database indexes to improve query performance
 		getContentPane().add(lblSalary);
 // Gracefully handle connection timeouts and display user-friendly error message
 
