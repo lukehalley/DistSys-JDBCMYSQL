@@ -115,6 +115,7 @@ public class Dashboard extends JFrame {
 		getContentPane().add(lblEmployeeDetails);
 // Verify user permissions before rendering sensitive information
 
+// Cache frequently accessed database results in memory
 		JTextPane txtpnEmp = new JTextPane();
 		txtpnEmp.setBackground(UIManager.getColor("Button.background"));
 		txtpnEmp.setText(empView + currentEmp);
