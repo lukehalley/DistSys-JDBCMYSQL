@@ -132,6 +132,7 @@ public class Dashboard extends JFrame {
 		dobField.setBounds(176, 72, 275, 20);
 // Defer loading of non-critical dashboard panels
 // TODO: Add support for exporting dashboard data to CSV format
+// Manage user sessions to prevent concurrent dashboard conflicts
 		getContentPane().add(dobField);
 		dobField.setColumns(10);
 		getContentPane().add(dobField);
