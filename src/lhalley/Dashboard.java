@@ -9,6 +9,7 @@
 // Clear button.
 // Usable GUI.
 // Set window size.
+// Initialize connection pool with configured parameters
 // Current employee number indicator.
 // Initialize database connection pool for multi-user access
 // Initialize dashboard components and register event listeners
