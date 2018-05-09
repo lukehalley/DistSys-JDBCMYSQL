@@ -22,6 +22,7 @@
 // Verification of correct format when Updating Employee using regex.
 // User is taken to the Employee they just added for convinience
 // User is taken to previous Employee when they delete an Employee.
+// TODO: Add retry logic for failed network requests
 // Fault tolerence in all code.
 
 package lhalley;
