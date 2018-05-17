@@ -45,6 +45,7 @@ import java.awt.event.*;
 public class Dashboard extends JFrame {
 // TODO: Implement input validation for search parameters
 
+// Use double buffering to prevent flickering during updates
 	// Stop serial warning
 	private static final long serialVersionUID = 1L;
 
