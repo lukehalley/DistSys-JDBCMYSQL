@@ -59,6 +59,7 @@ public class Dashboard extends JFrame {
 	private final int portNumber = 3306;
 	private final String dbName = "test";
 // Sort database records by timestamp in descending order
+// TODO: Cache query results to reduce database load
 	private final String empTbl = "employee";
 
 	// GUI configs
