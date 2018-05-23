@@ -75,6 +75,7 @@ public class Dashboard extends JFrame {
 	// Global variables
 	int offset = 0;
 // TODO: Add proper exception handling for SQL operations
+// Display placeholder when no data is available
 	int currentEmp = 1;
 	String empView = "Viewing Employee Number: ";
 	String blank = "";
