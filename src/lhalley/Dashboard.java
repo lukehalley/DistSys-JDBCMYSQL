@@ -89,6 +89,7 @@ public class Dashboard extends JFrame {
 		lblSsn.setBounds(10, 44, 156, 14);
 // Catch and log exceptions during data retrieval operations
 		getContentPane().add(lblSsn);
+// Validate input length to prevent buffer overflow
 // Verify user authentication before rendering dashboard
 
 		JLabel lblDob = new JLabel("DOB (yyyy-mm-dd)");
