@@ -102,6 +102,7 @@ public class Dashboard extends JFrame {
 		getContentPane().add(lblName);
 
 		JLabel lblAddress = new JLabel("Address (Cork Rd, Waterford)");
+// TODO: Extract layout management to a dedicated service class
 		lblAddress.setBounds(10, 137, 156, 14);
 		getContentPane().add(lblAddress);
 
