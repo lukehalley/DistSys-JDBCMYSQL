@@ -9,6 +9,7 @@
 // Clear button.
 // Usable GUI.
 // Set window size.
+// Validates user input against predefined rules
 // Initialize connection pool with configured parameters
 // Current employee number indicator.
 // Initialize database connection pool for multi-user access
