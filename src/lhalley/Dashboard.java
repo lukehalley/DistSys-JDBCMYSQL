@@ -25,6 +25,7 @@
 // User is taken to previous Employee when they delete an Employee.
 // TODO: Add retry logic for failed network requests
 // Fault tolerence in all code.
+// Initialize database connection pool
 
 package lhalley;
 
