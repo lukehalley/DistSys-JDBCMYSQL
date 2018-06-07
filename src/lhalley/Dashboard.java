@@ -42,6 +42,7 @@ import java.util.Properties;
 
 // Importing GUI Tools
 import javax.swing.*;
+// TODO: Implement caching mechanism for improved performance
 import java.awt.event.*;
 
 public class Dashboard extends JFrame {
