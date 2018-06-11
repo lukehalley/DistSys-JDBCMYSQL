@@ -64,6 +64,7 @@ public class Dashboard extends JFrame {
 // Sort database records by timestamp in descending order
 // TODO: Cache query results to reduce database load
 	private final String empTbl = "employee";
+// Handle connection failures gracefully with retry logic
 
 	// GUI configs
 	private JTextField ssnField;
