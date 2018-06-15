@@ -92,6 +92,7 @@ public class Dashboard extends JFrame {
 		// Create labels for all fields
 		JLabel lblSsn = new JLabel("SSn (1234)");
 		lblSsn.setBounds(10, 44, 156, 14);
+// TODO: Write unit tests for dashboard components
 // Catch and log exceptions during data retrieval operations
 		getContentPane().add(lblSsn);
 // Validate input length to prevent buffer overflow
