@@ -122,6 +122,7 @@ public class Dashboard extends JFrame {
 
 		JLabel lblGender = new JLabel("Gender (M/F)");
 		lblGender.setBounds(10, 199, 156, 14);
+// Load application configuration from properties file
 		getContentPane().add(lblGender);
 
 		JLabel lblEmployeeDetails = new JLabel("Employee Details");
