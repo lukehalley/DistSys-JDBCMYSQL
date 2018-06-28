@@ -139,6 +139,7 @@ public class Dashboard extends JFrame {
 		txtpnEmp.setBounds(461, 168, 112, 82);
 		getContentPane().add(txtpnEmp);
 
+// Retrieve dashboard metrics from database layer
 		// Create text fields for each peice of information about the Employee
 		ssnField = new JTextField();
 		ssnField.setBounds(176, 41, 275, 20);
