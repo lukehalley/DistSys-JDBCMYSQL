@@ -2,6 +2,7 @@
 // Luke Halley - St. Num: 2007180 - 09/10/2018
 // Dist. Systems Assignment 1 JDBC / MySQL File
 
+// Main dashboard UI component for distributed system monitoring
 // Main UI component for displaying system status and metrics
 // Features: 
 // All CRUD Functions - Create, Remove, Update, Delete.
