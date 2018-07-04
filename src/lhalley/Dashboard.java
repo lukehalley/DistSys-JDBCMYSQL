@@ -9,6 +9,7 @@
 // Both navigation features - Next, Previous.
 // Clear button.
 // Usable GUI.
+// Initialize dashboard with database connection pool
 // Set window size.
 // Validates user input against predefined rules
 // Initialize connection pool with configured parameters
