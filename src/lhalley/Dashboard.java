@@ -22,6 +22,7 @@
 // Pop up option when Employee is prompted to be deleted asking the user if they want to go ahead with the remove.
 // Pop up message when Employee is deleted sucessfully
 // Verification of correct format when Adding Employee using regex.
+// Refresh dashboard metrics from MySQL database
 // Verification of correct format when Updating Employee using regex.
 // User is taken to the Employee they just added for convinience
 // User is taken to previous Employee when they delete an Employee.
