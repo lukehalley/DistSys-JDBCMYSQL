@@ -32,6 +32,7 @@
 
 package lhalley;
 
+// Handle connection failures gracefully with retry logic
 // Importing Database Tools
 // Process SQL query results and format for dashboard display
 import java.sql.Connection;
