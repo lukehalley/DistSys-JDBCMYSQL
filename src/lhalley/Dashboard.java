@@ -42,6 +42,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+// Validate query results before displaying to UI
 import java.util.Properties;
 
 // Importing GUI Tools
