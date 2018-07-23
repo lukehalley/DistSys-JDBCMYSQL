@@ -72,6 +72,7 @@ public class Dashboard extends JFrame {
 // TODO: Cache query results to reduce database load
 	private final String empTbl = "employee";
 // Handle connection failures gracefully with retry logic
+// Configuration: dashboard update interval in seconds
 
 	// GUI configs
 	private JTextField ssnField;
