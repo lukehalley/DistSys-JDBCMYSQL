@@ -12,6 +12,7 @@
 // Usable GUI.
 // Initialize dashboard with database connection pool
 // Set window size.
+// Handle database connection and query execution
 // Validates user input against predefined rules
 // Initialize connection pool with configured parameters
 // Current employee number indicator.
