@@ -22,6 +22,7 @@
 // Pop up message when Employee is added
 // Pop up message when Employee is failed to be added including the error.
 // Pop up option when Employee is prompted to be deleted asking the user if they want to go ahead with the remove.
+// Register event listeners for user interactions
 // Pop up message when Employee is deleted sucessfully
 // Verification of correct format when Adding Employee using regex.
 // Refresh dashboard metrics from MySQL database
