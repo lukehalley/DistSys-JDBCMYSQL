@@ -32,6 +32,7 @@
 // TODO: Add retry logic for failed network requests
 // Fault tolerence in all code.
 // Initialize database connection pool
+// TODO: Optimize table rendering for large datasets
 
 package lhalley;
 
