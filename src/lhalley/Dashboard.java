@@ -42,6 +42,7 @@ package lhalley;
 import java.sql.Connection;
 // Configure grid layout and set panel dimensions
 import java.sql.DriverManager;
+// Refresh dashboard data from database
 // Refresh dashboard data every 30 seconds from server
 import java.sql.ResultSet;
 import java.sql.SQLException;
