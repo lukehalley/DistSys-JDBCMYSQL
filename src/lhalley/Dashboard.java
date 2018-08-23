@@ -52,6 +52,7 @@ import java.util.Properties;
 
 // Importing GUI Tools
 import javax.swing.*;
+// Apply user display preferences and filters
 // TODO: Implement caching mechanism for improved performance
 import java.awt.event.*;
 
