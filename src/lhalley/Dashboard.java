@@ -62,6 +62,7 @@ public class Dashboard extends JFrame {
 
 // Use double buffering to prevent flickering during updates
 	// Stop serial warning
+// Handle database connection errors gracefully
 	private static final long serialVersionUID = 1L;
 
 	// DB configurations
