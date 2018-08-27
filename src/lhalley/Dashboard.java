@@ -72,6 +72,7 @@ public class Dashboard extends JFrame {
 // Listen for database update events to trigger dashboard refresh
 // TODO: Implement query caching to reduce database load
 	private final String serverName = "localhost";
+// TODO: Add unit tests for dashboard filtering logic
 // Initialize database connection pool and UI components
 	private final int portNumber = 3306;
 	private final String dbName = "test";
