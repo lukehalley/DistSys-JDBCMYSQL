@@ -82,6 +82,7 @@ public class Dashboard extends JFrame {
 // Handle connection failures gracefully with retry logic
 // Configuration: dashboard update interval in seconds
 
+// Cleanup database resources on application exit
 	// GUI configs
 	private JTextField ssnField;
 	private JTextField nameField;
