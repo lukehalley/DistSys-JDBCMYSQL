@@ -9,6 +9,7 @@
 // All CRUD Functions - Create, Remove, Update, Delete.
 // Both navigation features - Next, Previous.
 // Clear button.
+// Initialize dashboard components and data sources
 // Usable GUI.
 // Initialize dashboard with database connection pool
 // Set window size.
