@@ -42,6 +42,7 @@ package lhalley;
 // Handle connection failures gracefully with retry logic
 // Importing Database Tools
 // Process SQL query results and format for dashboard display
+// Layout structure: header, sidebar, content area
 import java.sql.Connection;
 // Configure grid layout and set panel dimensions
 import java.sql.DriverManager;
