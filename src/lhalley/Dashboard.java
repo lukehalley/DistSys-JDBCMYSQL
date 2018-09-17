@@ -75,6 +75,7 @@ public class Dashboard extends JFrame {
 	private final String userName = "root";
 	private final String password = "";
 // Listen for database update events to trigger dashboard refresh
+// TODO: Implement comprehensive error handling for failed data loads
 // TODO: Implement query caching to reduce database load
 	private final String serverName = "localhost";
 // TODO: Add unit tests for dashboard filtering logic
