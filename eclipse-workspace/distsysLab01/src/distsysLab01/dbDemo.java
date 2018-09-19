@@ -71,8 +71,7 @@ public class dbDemo extends JFrame {
         lblEmployeeDetails.setBounds(0, 0, 434, 37);
         getContentPane().add(lblEmployeeDetails);
 
-        // Loading intial rows
-        
+        // Loading first row
         try {
             Connection dbConnection = null;
             Statement statement = null;
@@ -166,10 +165,6 @@ public class dbDemo extends JFrame {
         JButton btnUpdate = new JButton("Update");
         btnUpdate.setBounds(312, 102, 112, 23);
         getContentPane().add(btnUpdate);
-
-        JButton btnPrevious = new JButton("Previous");
-        btnPrevious.setBounds(87, 227, 89, 23);
-        getContentPane().add(btnPrevious);
         
         JButton btnClear = new JButton("Clear");
         btnClear.setBounds(312, 133, 112, 23);
@@ -177,7 +172,6 @@ public class dbDemo extends JFrame {
 
         JButton btnNext = new JButton("Next");
         btnNext.setBounds(213, 227, 89, 23);
-        
         btnNext.addActionListener(new ActionListener() {
         	int offset = 0;
             public void actionPerformed(ActionEvent arg0) {
@@ -264,6 +258,101 @@ public class dbDemo extends JFrame {
 
                 }
                 System.out.println(offset);
+                
+                JButton btnPrevious = new JButton("Previous");
+                btnPrevious.setBounds(87, 227, 89, 23);
+                getContentPane().add(btnPrevious);
+                btnPrevious.addActionListener(new ActionListener() {
+
+					public void actionPerformed(ActionEvent arg0) {
+						offset--;
+						System.out.println(offset);
+						
+		                try {
+		                    Connection dbConnection = null;
+		                    Statement statement = null;
+
+		                    String selectTableSQL = "SELECT * FROM " + empTbl + " ORDER BY id LIMIT 1 OFFSET " + offset;
+		                    System.out.println("SENDING THIS: " + selectTableSQL);
+
+		                    dbConnection = getConnection();
+		                    statement = dbConnection.createStatement();
+
+		                    ResultSet rs = statement.executeQuery(selectTableSQL);
+
+		                    while (rs.next()) {
+
+		                        String customerID = rs.getString("id");
+		                        String customerSSN = rs.getString("ssn");
+		                        String customerBDATE = rs.getString("bdate");
+		                        String customerName = rs.getString("name");
+		                        String customerAddress = rs.getString("address");
+		                        String customerSex = rs.getString("sex");
+		                        String customerWorks = rs.getString("worksfor");
+		                        String customerSalary = rs.getString("salary");
+
+		                        System.out.println("id : " + customerID);
+		                        System.out.println("ssn : " + customerSSN);
+		                        System.out.println("bdate : " + customerBDATE);
+		                        System.out.println("name : " + customerName);
+		                        System.out.println("address : " + customerAddress);
+		                        System.out.println("sex : " + customerSex);
+		                        System.out.println("works : " + customerWorks);
+		                        System.out.println("salary : " + customerSalary);
+
+		                        ssnField = new JTextField();
+		                        ssnField.setBounds(87, 41, 215, 20);
+		                        getContentPane().add(ssnField);
+		                        ssnField.setColumns(10);
+		                        ssnField.setText(customerSSN);
+		                        ssnField.repaint();
+
+		                        dobField = new JTextField();
+		                        dobField.setColumns(10);
+		                        dobField.setBounds(87, 72, 215, 20);
+		                        getContentPane().add(dobField);
+		                        dobField.setText(customerBDATE);
+		                        ssnField.repaint();
+
+		                        nameField = new JTextField();
+		                        nameField.setColumns(10);
+		                        nameField.setBounds(87, 103, 215, 20);
+		                        getContentPane().add(nameField);
+		                        nameField.setText(customerName);
+		                        ssnField.repaint();
+
+		                        addressField = new JTextField();
+		                        addressField.setColumns(10);
+		                        addressField.setBounds(87, 134, 215, 20);
+		                        getContentPane().add(addressField);
+		                        addressField.setText(customerAddress);
+		                        ssnField.repaint();
+
+		                        salaryField = new JTextField();
+		                        salaryField.setColumns(10);
+		                        salaryField.setBounds(87, 165, 215, 20);
+		                        getContentPane().add(salaryField);
+		                        salaryField.setText(customerSalary);
+		                        ssnField.repaint();
+
+		                        genderField = new JTextField();
+		                        genderField.setColumns(10);
+		                        genderField.setBounds(87, 196, 215, 20);
+		                        getContentPane().add(genderField);
+		                        genderField.setText(customerSex);
+		                        ssnField.repaint();
+
+		                    }
+
+		                } catch (SQLException e) {
+
+		                    System.out.println(e.getMessage());
+
+		                }
+						
+					}
+                	
+                });
             }
         });
         getContentPane().add(btnNext);
