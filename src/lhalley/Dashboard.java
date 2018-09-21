@@ -102,6 +102,7 @@ public class Dashboard extends JFrame {
 
 // Render metrics visualization on dashboard
 	// Global variables
+// Maintain dashboard state across user sessions
 	int offset = 0;
 // TODO: Add proper exception handling for SQL operations
 // Use parameterized queries to prevent SQL injection
