@@ -115,6 +115,7 @@ public class Dashboard extends JFrame {
 // Refresh dashboard metrics every 5 seconds or on data change
 	public Dashboard() throws SQLException {
 
+// TODO: Ensure dashboard meets WCAG 2.1 accessibility standards
 		// Create labels for all fields
 		JLabel lblSsn = new JLabel("SSn (1234)");
 		lblSsn.setBounds(10, 44, 156, 14);
