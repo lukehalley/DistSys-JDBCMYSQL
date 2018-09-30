@@ -88,7 +88,6 @@ public class dbDemo extends JFrame {
                 String customerName = rs.getString("name");
                 String customerAddress = rs.getString("address");
                 String customerSex = rs.getString("sex");
-                String customerWorks = rs.getString("worksfor");
                 String customerSalary = rs.getString("salary");
 
                 ssnField = new JTextField();
@@ -141,22 +140,9 @@ public class dbDemo extends JFrame {
 
         }
 
-        JButton btnAdd = new JButton("Add");
-        btnAdd.setBounds(312, 40, 112, 23);
-        getContentPane().add(btnAdd);
 
-        JButton btnDelete = new JButton("Delete");
-        btnDelete.setBounds(312, 71, 112, 23);
-        getContentPane().add(btnDelete);
 
-        JButton btnUpdate = new JButton("Update");
-        btnUpdate.setBounds(312, 102, 112, 23);
-        getContentPane().add(btnUpdate);
-
-        JButton btnClear = new JButton("Clear");
-        btnClear.setBounds(312, 133, 112, 23);
-        getContentPane().add(btnClear);
-
+        // Next and Previous buttons
         JButton btnNext = new JButton("Next");
         btnNext.setBounds(213, 227, 89, 23);
         btnNext.addActionListener(new ActionListener() {
@@ -198,7 +184,6 @@ public class dbDemo extends JFrame {
                             String customerName = rs.getString("name");
                             String customerAddress = rs.getString("address");
                             String customerSex = rs.getString("sex");
-                            String customerWorks = rs.getString("worksfor");
                             String customerSalary = rs.getString("salary");
 
                             System.out.println("id : " + customerID);
@@ -207,7 +192,6 @@ public class dbDemo extends JFrame {
                             System.out.println("name : " + customerName);
                             System.out.println("address : " + customerAddress);
                             System.out.println("sex : " + customerSex);
-                            System.out.println("works : " + customerWorks);
                             System.out.println("salary : " + customerSalary);
 
                             ssnField = new JTextField();
@@ -304,7 +288,6 @@ public class dbDemo extends JFrame {
 		                                String customerName = rs.getString("name");
 		                                String customerAddress = rs.getString("address");
 		                                String customerSex = rs.getString("sex");
-		                                String customerWorks = rs.getString("worksfor");
 		                                String customerSalary = rs.getString("salary");
 		
 		                                System.out.println("id : " + customerID);
@@ -313,7 +296,6 @@ public class dbDemo extends JFrame {
 		                                System.out.println("name : " + customerName);
 		                                System.out.println("address : " + customerAddress);
 		                                System.out.println("sex : " + customerSex);
-		                                System.out.println("works : " + customerWorks);
 		                                System.out.println("salary : " + customerSalary);
 		
 		                                ssnField = new JTextField();
@@ -379,6 +361,54 @@ public class dbDemo extends JFrame {
         });
         getContentPane().add(btnNext);
 
+        JButton btnAdd = new JButton("Add");
+        btnAdd.setBounds(312, 40, 112, 23);
+        getContentPane().add(btnAdd);
+        btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String currentSSN = ssnField.getText();
+				String currentDOB = dobField.getText();
+				String currentName = nameField.getText();
+				String currentAdd = addressField.getText();
+				String currentSalary = salaryField.getText();
+				String currentGender = genderField.getText();
+				
+				try {
+		            Connection dbConnection = null;
+		            Statement statement = null;
+
+		            String selectTableSQL = 
+		            		"INSERT INTO " + empTbl + " VALUES(" 
+		            				+ currentSSN + ", " + currentDOB + ", " 
+		            				+ currentName + ", " + currentAdd + ", " 
+		            				+ currentSalary + ", " + currentGender + ")";
+		            System.out.println("SENDING THIS: " + selectTableSQL);
+
+		            dbConnection = getConnection();
+		            statement = dbConnection.createStatement();
+
+		            statement.executeUpdate(selectTableSQL);
+
+		        } catch (SQLException error) {
+
+		            System.out.println(error.getMessage());
+
+		        }
+			}
+        });
+
+        JButton btnDelete = new JButton("Delete");
+        btnDelete.setBounds(312, 71, 112, 23);
+        getContentPane().add(btnDelete);
+
+        JButton btnUpdate = new JButton("Update");
+        btnUpdate.setBounds(312, 102, 112, 23);
+        getContentPane().add(btnUpdate);
+
+        JButton btnClear = new JButton("Clear");
+        btnClear.setBounds(312, 133, 112, 23);
+        getContentPane().add(btnClear);
+        
         getContentPane().setLayout(null);
 
     }
