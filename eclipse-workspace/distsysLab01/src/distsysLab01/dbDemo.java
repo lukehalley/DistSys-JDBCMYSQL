@@ -1,10 +1,13 @@
 package distsysLab01;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Properties;
 
@@ -77,18 +80,80 @@ public class dbDemo extends JFrame {
 
             dbConnection = getConnection();
             statement = dbConnection.createStatement();
+            
+            Statement s = dbConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ResultSet r = s.executeQuery("SELECT * FROM " + empTbl);
+            r.last();
+            int count = r.getRow();
+            r.beforeFirst();
+            
+            if (count > 0) {
+            	
+                ResultSet rs = statement.executeQuery(selectTableSQL);
 
-            ResultSet rs = statement.executeQuery(selectTableSQL);
+                while (rs.next()) {
 
-            while (rs.next()) {
+                    String customerID = rs.getString("id");
+                    String customerSSN = rs.getString("ssn");
+                    String customerBDATE = rs.getString("bdate");
+                    String customerName = rs.getString("name");
+                    String customerAddress = rs.getString("address");
+                    String customerSex = rs.getString("sex");
+                    String customerSalary = rs.getString("salary");
 
-                String customerID = rs.getString("id");
-                String customerSSN = rs.getString("ssn");
-                String customerBDATE = rs.getString("bdate");
-                String customerName = rs.getString("name");
-                String customerAddress = rs.getString("address");
-                String customerSex = rs.getString("sex");
-                String customerSalary = rs.getString("salary");
+                    ssnField = new JTextField();
+                    ssnField.setBounds(87, 41, 215, 20);
+                    getContentPane().add(ssnField);
+                    ssnField.setColumns(10);
+                    ssnField.setText(customerSSN);
+                    ssnField.repaint();
+
+                    dobField = new JTextField();
+                    dobField.setColumns(10);
+                    dobField.setBounds(87, 72, 215, 20);
+                    getContentPane().add(dobField);
+                    dobField.setText(customerBDATE);
+                    ssnField.repaint();
+
+                    nameField = new JTextField();
+                    nameField.setColumns(10);
+                    nameField.setBounds(87, 103, 215, 20);
+                    getContentPane().add(nameField);
+                    nameField.setText(customerName);
+                    ssnField.repaint();
+
+                    addressField = new JTextField();
+                    addressField.setColumns(10);
+                    addressField.setBounds(87, 134, 215, 20);
+                    getContentPane().add(addressField);
+                    addressField.setText(customerAddress);
+                    ssnField.repaint();
+
+                    salaryField = new JTextField();
+                    salaryField.setColumns(10);
+                    salaryField.setBounds(87, 165, 215, 20);
+                    getContentPane().add(salaryField);
+                    salaryField.setText(customerSalary);
+                    ssnField.repaint();
+
+                    genderField = new JTextField();
+                    genderField.setColumns(10);
+                    genderField.setBounds(87, 196, 215, 20);
+                    getContentPane().add(genderField);
+                    genderField.setText(customerSex);
+                    ssnField.repaint();
+
+                }
+            	
+            } else {
+            	
+                String customerID = "";
+                String customerSSN = "";
+                String customerBDATE = "";
+                String customerName = "";
+                String customerAddress = "";
+                String customerSex = "";
+                String customerSalary = "";
 
                 ssnField = new JTextField();
                 ssnField.setBounds(87, 41, 215, 20);
@@ -131,7 +196,7 @@ public class dbDemo extends JFrame {
                 getContentPane().add(genderField);
                 genderField.setText(customerSex);
                 ssnField.repaint();
-
+            	
             }
 
         } catch (SQLException e) {
@@ -139,9 +204,7 @@ public class dbDemo extends JFrame {
             System.out.println(e.getMessage());
 
         }
-
-
-
+        
         // Next and Previous buttons
         JButton btnNext = new JButton("Next");
         btnNext.setBounds(213, 227, 89, 23);
@@ -185,14 +248,6 @@ public class dbDemo extends JFrame {
                             String customerAddress = rs.getString("address");
                             String customerSex = rs.getString("sex");
                             String customerSalary = rs.getString("salary");
-
-                            System.out.println("id : " + customerID);
-                            System.out.println("ssn : " + customerSSN);
-                            System.out.println("bdate : " + customerBDATE);
-                            System.out.println("name : " + customerName);
-                            System.out.println("address : " + customerAddress);
-                            System.out.println("sex : " + customerSex);
-                            System.out.println("salary : " + customerSalary);
 
                             ssnField = new JTextField();
                             ssnField.setBounds(87, 41, 215, 20);
@@ -290,14 +345,6 @@ public class dbDemo extends JFrame {
 		                                String customerSex = rs.getString("sex");
 		                                String customerSalary = rs.getString("salary");
 		
-		                                System.out.println("id : " + customerID);
-		                                System.out.println("ssn : " + customerSSN);
-		                                System.out.println("bdate : " + customerBDATE);
-		                                System.out.println("name : " + customerName);
-		                                System.out.println("address : " + customerAddress);
-		                                System.out.println("sex : " + customerSex);
-		                                System.out.println("salary : " + customerSalary);
-		
 		                                ssnField = new JTextField();
 		                                ssnField.setBounds(87, 41, 215, 20);
 		                                getContentPane().add(ssnField);
@@ -372,16 +419,27 @@ public class dbDemo extends JFrame {
 				String currentAdd = addressField.getText();
 				String currentSalary = salaryField.getText();
 				String currentGender = genderField.getText();
-				
+
 				try {
-		            Connection dbConnection = null;
-		            Statement statement = null;
+                    Connection dbConnection = null;
+                    Statement statement = null;
+
+                    dbConnection = getConnection();
+                    
+                    Statement s = dbConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+                        ResultSet r = s.executeQuery("SELECT * FROM " + empTbl);
+                        r.last();
+                        int count = r.getRow();
+                        r.beforeFirst();
+                        System.out.println(count);
+                        int id = count + 1;
+                        System.out.println("ID: " + id + " Count: " + count);
 
 		            String selectTableSQL = 
-		            		"INSERT INTO " + empTbl + " VALUES(" 
-		            				+ currentSSN + ", " + currentDOB + ", " 
-		            				+ currentName + ", " + currentAdd + ", " 
-		            				+ currentSalary + ", " + currentGender + ")";
+		            		"INSERT INTO " + empTbl + " VALUES (" 
+		            				+ id + ", " + currentSSN + ", " + "'" + currentDOB + "'" + ", " 
+		            				+ "'" + currentName + "'" + ", " + "'" + currentAdd + "'" + ", " 
+		            				+ "'" + currentGender + "'" + ", " + currentSalary + ")";
 		            System.out.println("SENDING THIS: " + selectTableSQL);
 
 		            dbConnection = getConnection();
