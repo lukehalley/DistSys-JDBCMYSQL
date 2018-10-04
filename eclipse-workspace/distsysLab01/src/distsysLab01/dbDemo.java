@@ -32,6 +32,7 @@ public class dbDemo extends JFrame {
     private JTextField addressField;
     private JTextField salaryField;
     private JTextField genderField;
+	int offset = 0;
 
     // GUI
 
@@ -71,7 +72,7 @@ public class dbDemo extends JFrame {
             Connection dbConnection = null;
             Statement statement = null;
 
-            String selectTableSQL = "SELECT * FROM " + empTbl + " ORDER BY id LIMIT 1 OFFSET " + 0;
+            String selectTableSQL = "SELECT * FROM " + empTbl + " ORDER BY id LIMIT 1 OFFSET " + offset;
             System.out.println("SENDING THIS: " + selectTableSQL);
 
             dbConnection = getConnection();
@@ -89,15 +90,6 @@ public class dbDemo extends JFrame {
                 String customerSex = rs.getString("sex");
                 String customerWorks = rs.getString("worksfor");
                 String customerSalary = rs.getString("salary");
-
-//                System.out.println("id : " + customerID);
-//                System.out.println("ssn : " + customerSSN);
-//                System.out.println("bdate : " + customerBDATE);
-//                System.out.println("name : " + customerName);
-//                System.out.println("address : " + customerAddress);
-//                System.out.println("sex : " + customerSex);
-//                System.out.println("works : " + customerWorks);
-//                System.out.println("salary : " + customerSalary);
 
                 ssnField = new JTextField();
                 ssnField.setBounds(87, 41, 215, 20);
@@ -168,15 +160,12 @@ public class dbDemo extends JFrame {
         JButton btnNext = new JButton("Next");
         btnNext.setBounds(213, 227, 89, 23);
         btnNext.addActionListener(new ActionListener() {
-            int offset = 1;
+
             public void actionPerformed(ActionEvent arg0) {
-                
+
                 try {
                     Connection dbConnection = null;
                     Statement statement = null;
-
-                    String selectTableSQL = "SELECT * FROM " + empTbl + " ORDER BY id LIMIT 1 OFFSET " + offset;
-                    System.out.println("SENDING THIS: " + selectTableSQL);
 
                     dbConnection = getConnection();
                     
@@ -192,9 +181,12 @@ public class dbDemo extends JFrame {
                     
                     statement = dbConnection.createStatement();
 
-                    if (offset < count-- && offset >= 0){
+                    offset++;
+
+                    if (offset < count && offset >= 0){
                     	
-                    	offset++;
+                        String selectTableSQL = "SELECT * FROM " + empTbl + " ORDER BY id LIMIT 1 OFFSET " + offset;
+                        System.out.println("SENDING THIS: " + selectTableSQL);
                     
                     	ResultSet rs = statement.executeQuery(selectTableSQL);
 
@@ -209,14 +201,14 @@ public class dbDemo extends JFrame {
                             String customerWorks = rs.getString("worksfor");
                             String customerSalary = rs.getString("salary");
 
-//                            System.out.println("id : " + customerID);
-//                            System.out.println("ssn : " + customerSSN);
-//                            System.out.println("bdate : " + customerBDATE);
-//                            System.out.println("name : " + customerName);
-//                            System.out.println("address : " + customerAddress);
-//                            System.out.println("sex : " + customerSex);
-//                            System.out.println("works : " + customerWorks);
-//                            System.out.println("salary : " + customerSalary);
+                            System.out.println("id : " + customerID);
+                            System.out.println("ssn : " + customerSSN);
+                            System.out.println("bdate : " + customerBDATE);
+                            System.out.println("name : " + customerName);
+                            System.out.println("address : " + customerAddress);
+                            System.out.println("sex : " + customerSex);
+                            System.out.println("works : " + customerWorks);
+                            System.out.println("salary : " + customerSalary);
 
                             ssnField = new JTextField();
                             ssnField.setBounds(87, 41, 215, 20);
@@ -261,6 +253,8 @@ public class dbDemo extends JFrame {
                             ssnField.repaint();
 
                         } 
+                    } else {
+                    	offset--;
                     }
 
                 } catch (SQLException e) {
@@ -278,29 +272,25 @@ public class dbDemo extends JFrame {
 
                     public void actionPerformed(ActionEvent arg0) {
                         
-                        System.out.println(offset);
-
                         try {
                             Connection dbConnection = null;
                             Statement statement = null;
 
-                            String selectTableSQL = "SELECT * FROM " + empTbl + " ORDER BY id LIMIT 1 OFFSET " + offset;
-                            System.out.println("SENDING THIS: " + selectTableSQL);
-
-                            dbConnection = getConnection();
+                            dbConnection = getConnection(); 
                             
-                            Statement s = dbConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                                    ResultSet.CONCUR_READ_ONLY);
-                                ResultSet r = s
-                                    .executeQuery("SELECT * FROM " + empTbl);
+                            Statement s = dbConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+                                ResultSet r = s.executeQuery("SELECT * FROM " + empTbl);
                                 r.last();
                                 int count = r.getRow();
                                 r.beforeFirst();
                                 System.out.println("COUNT: " + count);
                             
-                                if (offset >= 0){
-                            	
+                                if (offset < count && offset > 0){
+                              
 	                            	offset--;
+	                            	
+	                                String selectTableSQL = "SELECT * FROM " + empTbl + " ORDER BY id LIMIT 1 OFFSET " + offset;
+	                                System.out.println("SENDING THIS: " + selectTableSQL);
 	                            	
 		                            statement = dbConnection.createStatement();
 		
@@ -317,14 +307,14 @@ public class dbDemo extends JFrame {
 		                                String customerWorks = rs.getString("worksfor");
 		                                String customerSalary = rs.getString("salary");
 		
-//		                                System.out.println("id : " + customerID);
-//		                                System.out.println("ssn : " + customerSSN);
-//		                                System.out.println("bdate : " + customerBDATE);
-//		                                System.out.println("name : " + customerName);
-//		                                System.out.println("address : " + customerAddress);
-//		                                System.out.println("sex : " + customerSex);
-//		                                System.out.println("works : " + customerWorks);
-//		                                System.out.println("salary : " + customerSalary);
+		                                System.out.println("id : " + customerID);
+		                                System.out.println("ssn : " + customerSSN);
+		                                System.out.println("bdate : " + customerBDATE);
+		                                System.out.println("name : " + customerName);
+		                                System.out.println("address : " + customerAddress);
+		                                System.out.println("sex : " + customerSex);
+		                                System.out.println("works : " + customerWorks);
+		                                System.out.println("salary : " + customerSalary);
 		
 		                                ssnField = new JTextField();
 		                                ssnField.setBounds(87, 41, 215, 20);
