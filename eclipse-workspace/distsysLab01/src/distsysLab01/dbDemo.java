@@ -284,11 +284,11 @@ public class dbDemo extends JFrame {
                                 int count = r.getRow();
                                 r.beforeFirst();
                                 System.out.println("COUNT: " + count);
-                            
-                                if (offset < count && offset > 0){
-                              
-	                            	offset--;
-	                            	
+
+                            	offset--;
+                                
+                                if (offset < count && offset >= 0){
+                    	
 	                                String selectTableSQL = "SELECT * FROM " + empTbl + " ORDER BY id LIMIT 1 OFFSET " + offset;
 	                                System.out.println("SENDING THIS: " + selectTableSQL);
 	                            	
@@ -360,6 +360,8 @@ public class dbDemo extends JFrame {
 		
 		                            }
 	                            
+                            } else {
+                            	offset++;
                             }
 
                         } catch (SQLException e) {
