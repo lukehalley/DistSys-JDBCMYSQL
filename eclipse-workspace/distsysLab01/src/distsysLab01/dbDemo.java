@@ -49,7 +49,7 @@ public class dbDemo extends JFrame {
         lblName.setBounds(10, 106, 156, 14);
         getContentPane().add(lblName);
 
-        JLabel lblAddress = new JLabel("Address (Cork Rd, W..)");
+        JLabel lblAddress = new JLabel("Address (Cork Rd, Waterford)");
         lblAddress.setBounds(10, 137, 156, 14);
         getContentPane().add(lblAddress);
 
@@ -423,6 +423,9 @@ public class dbDemo extends JFrame {
 	                        
 	                        System.out.println("CURRENT EMP: " + currentEmp);
 	                        
+							final JPanel panel = new JPanel();
+							JOptionPane.showMessageDialog(panel, "Employee: " + customerName + " has been added sucessfully!", "Employee Add Sucessful!", JOptionPane.INFORMATION_MESSAGE);
+	                        
 	                    }
 
 			        } catch (SQLException error) {
@@ -512,6 +515,9 @@ public class dbDemo extends JFrame {
 	                        
 	                        System.out.println("CURRENT EMP: " + currentEmp);
 	                        
+							final JPanel panel = new JPanel();
+							JOptionPane.showMessageDialog(panel, "Employee: has been deleted sucessfully!", "Employee Delete Sucessful!", JOptionPane.INFORMATION_MESSAGE);
+	                        
 	                    }
 
 			        } catch (SQLException error) {
@@ -534,42 +540,50 @@ public class dbDemo extends JFrame {
 				String currentAdd = addressField.getText();
 				String currentSalary = salaryField.getText();
 				String currentGender = genderField.getText();
+				
+				if (currentSSN.matches(".*\\d+.*") && !currentAdd.matches(".*\\d+.*") && !currentName.matches(".*\\d+.*") && currentDOB.matches("([0-9]{4})-([0-9]{2})-([0-9]{2})") && currentSalary.matches(".*\\d+.*") && currentGender.matches("[a-zA-z]{1}")) {
 	
-				try {
-	                Connection dbConnection = null;
-	                Statement statement = null;
+					try {
+		                Connection dbConnection = null;
+		                Statement statement = null;
+		
+		                dbConnection = getConnection();
+			            statement = dbConnection.createStatement();
+			            
+	                    String selectTableSQL = "SELECT * FROM " + empTbl + " ORDER BY id LIMIT 1 OFFSET " + offset;
+	                    System.out.println("SENDING THIS: " + selectTableSQL);
+	                    
+	                    System.out.println("Offset: " + offset);
 	
-	                dbConnection = getConnection();
-		            statement = dbConnection.createStatement();
-		            
-                    String selectTableSQL = "SELECT * FROM " + empTbl + " ORDER BY id LIMIT 1 OFFSET " + offset;
-                    System.out.println("SENDING THIS: " + selectTableSQL);
-                    
-                    System.out.println("Offset: " + offset);
-
-                    ResultSet rs = statement.executeQuery(selectTableSQL);
-                    
-                    rs.next();
-                    
-                    System.out.println("BEFORE");
-		            String updateEmp = "UPDATE " + empTbl 
-		            		+ " SET ssn = " + "'" + currentSSN + "'"
-		            		+ ", bdate = " + "'" + currentDOB + "'"
-		            		+ ", name = " + "'" + currentName + "'"
-		            		+ ", address = " + "'" + currentAdd + "'"
-		            		+ ", sex = " + "'" + currentGender + "'"
-		            		+ ", salary = " + "'" + currentSalary + "'"
-		            		+ " WHERE ssn = " + "'" + rs.getString("ssn") + "'";
-		            System.out.println("SENDING THIS: " + updateEmp);
-		            System.out.println("AFTER");
-					 
-					statement.executeUpdate(updateEmp);
-	
-		        } catch (SQLException error) {
-	
-		            System.out.println(error.getMessage());
-	
-		        }
+	                    ResultSet rs = statement.executeQuery(selectTableSQL);
+	                    
+	                    rs.next();
+	                    
+	                    System.out.println("BEFORE");
+			            String updateEmp = "UPDATE " + empTbl 
+			            		+ " SET ssn = " + "'" + currentSSN + "'"
+			            		+ ", bdate = " + "'" + currentDOB + "'"
+			            		+ ", name = " + "'" + currentName + "'"
+			            		+ ", address = " + "'" + currentAdd + "'"
+			            		+ ", sex = " + "'" + currentGender + "'"
+			            		+ ", salary = " + "'" + currentSalary + "'"
+			            		+ " WHERE ssn = " + "'" + rs.getString("ssn") + "'";
+			            System.out.println("SENDING THIS: " + updateEmp);
+			            System.out.println("AFTER");
+						 
+						statement.executeUpdate(updateEmp);
+						
+						final JPanel panel = new JPanel();
+						JOptionPane.showMessageDialog(panel, "Employee: " + currentName + " has been updated sucessfully!", "Employee Update Sucessful!", JOptionPane.INFORMATION_MESSAGE);
+			        } catch (SQLException error) {
+		
+			            System.out.println(error.getMessage());
+		
+			        }
+				} else {
+					final JPanel panel = new JPanel();
+					JOptionPane.showMessageDialog(panel, "Please enter all fields in the correct!", "Error", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		
         });
