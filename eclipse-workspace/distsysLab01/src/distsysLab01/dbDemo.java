@@ -9,6 +9,7 @@ import java.util.Properties;
 
 // GUI
 import javax.swing.*;
+
 import java.awt.event.*;
 
 @SuppressWarnings("serial")
@@ -22,8 +23,8 @@ public class dbDemo extends JFrame {
     private final String dbName = "assignment1";
     private final String empTbl = "employee";
     private JTextField ssnField;
-    private JTextField dobField;
     private JTextField nameField;
+    private JTextField dobField;
     private JTextField addressField;
     private JTextField salaryField;
     private JTextField genderField;
@@ -36,81 +37,82 @@ public class dbDemo extends JFrame {
 
     public dbDemo() throws SQLException {
 
-        JLabel lblSsn = new JLabel("SSn");
-        lblSsn.setBounds(10, 44, 72, 14);
+        JLabel lblSsn = new JLabel("SSn (1234)");
+        lblSsn.setBounds(10, 44, 156, 14);
         getContentPane().add(lblSsn);
 
-        JLabel lblDob = new JLabel("DOB");
-        lblDob.setBounds(10, 75, 72, 14);
+        JLabel lblDob = new JLabel("DOB (yyyy-mm-dd)");
+        lblDob.setBounds(10, 75, 156, 14);
         getContentPane().add(lblDob);
 
-        JLabel lblName = new JLabel("Name");
-        lblName.setBounds(10, 106, 72, 14);
+        JLabel lblName = new JLabel("Name (John Appleseed)");
+        lblName.setBounds(10, 106, 156, 14);
         getContentPane().add(lblName);
 
-        JLabel lblAddress = new JLabel("Address");
-        lblAddress.setBounds(10, 137, 72, 14);
+        JLabel lblAddress = new JLabel("Address (Cork Rd, W..)");
+        lblAddress.setBounds(10, 137, 156, 14);
         getContentPane().add(lblAddress);
 
-        JLabel lblSalary = new JLabel("Salary");
-        lblSalary.setBounds(10, 168, 72, 14);
+        JLabel lblSalary = new JLabel("Salary (1234)");
+        lblSalary.setBounds(10, 168, 156, 14);
         getContentPane().add(lblSalary);
 
-        JLabel lblGender = new JLabel("Gender");
-        lblGender.setBounds(10, 199, 72, 14);
+        JLabel lblGender = new JLabel("Gender (M/F)");
+        lblGender.setBounds(10, 199, 156, 14);
         getContentPane().add(lblGender);
 
         JLabel lblEmployeeDetails = new JLabel("Employee Details");
         lblEmployeeDetails.setHorizontalAlignment(SwingConstants.CENTER);
-        lblEmployeeDetails.setBounds(0, 0, 434, 37);
+        lblEmployeeDetails.setBounds(0, 0, 582, 37);
         getContentPane().add(lblEmployeeDetails);
         
         JTextPane txtpnEmp = new JTextPane();
         txtpnEmp.setBackground(UIManager.getColor("Button.background"));
         txtpnEmp.setText(empView + currentEmp);
-        txtpnEmp.setBounds(312, 168, 112, 82);
+        txtpnEmp.setBounds(461, 168, 112, 82);
         getContentPane().add(txtpnEmp);
         
         ssnField = new JTextField();
-        ssnField.setBounds(87, 41, 215, 20);
+        ssnField.setBounds(176, 41, 275, 20);
         getContentPane().add(ssnField);
         ssnField.setColumns(10);
-        
+
         dobField = new JTextField();
+        dobField.setBounds(176, 72, 275, 20);
+        getContentPane().add(dobField);
         dobField.setColumns(10);
-        dobField.setBounds(87, 72, 215, 20);
         getContentPane().add(dobField);
         
         nameField = new JTextField();
         nameField.setColumns(10);
-        nameField.setBounds(87, 103, 215, 20);
+        nameField.setBounds(176, 103, 275, 20);
         getContentPane().add(nameField);
         
         addressField = new JTextField();
         addressField.setColumns(10);
-        addressField.setBounds(87, 134, 215, 20);
+        addressField.setBounds(176, 134, 275, 20);
         getContentPane().add(addressField);
         
         salaryField = new JTextField();
         salaryField.setColumns(10);
-        salaryField.setBounds(87, 165, 215, 20);
+        salaryField.setBounds(176, 165, 275, 20);
         getContentPane().add(salaryField);
 
         genderField = new JTextField();
         genderField.setColumns(10);
-        genderField.setBounds(87, 196, 215, 20);
+        genderField.setBounds(176, 196, 275, 20);
         getContentPane().add(genderField);
         
         JButton btnNext = new JButton("Next");
-        btnNext.setBounds(213, 227, 89, 23);
+        btnNext.setBounds(362, 227, 89, 23);
         getContentPane().add(btnNext);
         
         JButton btnPrevious = new JButton("Previous");
-        btnPrevious.setBounds(87, 227, 89, 23);
+        btnPrevious.setBounds(263, 227, 89, 23);
         getContentPane().add(btnPrevious);
         
         JButton btnAdd = new JButton("Add");
-        btnAdd.setBounds(312, 40, 112, 23);
+        btnAdd.setBounds(461, 40, 112, 23);
         getContentPane().add(btnAdd);
 
         // Loading first row
@@ -353,84 +355,94 @@ public class dbDemo extends JFrame {
 				String currentSalary = salaryField.getText();
 				String currentGender = genderField.getText();
 
-				try {
-                    Connection dbConnection = null;
-                    Statement statement = null;
+				// Check Date format is valid.
+				if (currentSSN.matches(".*\\d+.*") && !currentAdd.matches(".*\\d+.*") && !currentName.matches(".*\\d+.*") && currentDOB.matches("([0-9]{4})-([0-9]{2})-([0-9]{2})") && currentSalary.matches(".*\\d+.*") && currentGender.matches("[a-zA-z]{1}")) {
+					try {
+	                    Connection dbConnection = null;
+	                    Statement statement = null;
 
-                    dbConnection = getConnection();
-                    
-                    Statement s = dbConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-                        ResultSet r = s.executeQuery("SELECT * FROM " + empTbl);
-                        r.last();
-                        int count = r.getRow();
-                        r.beforeFirst();
-                        System.out.println(count);
-                        int id = count + 1;
-                        System.out.println("ID: " + id + " Count: " + count);
+	                    dbConnection = getConnection();
+	                    
+	                    Statement s = dbConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+	                        ResultSet r = s.executeQuery("SELECT * FROM " + empTbl);
+	                        r.last();
+	                        int count = r.getRow();
+	                        r.beforeFirst();
+	                        System.out.println(count);
+	                        int id = count + 1;
+	                        System.out.println("ID: " + id + " Count: " + count);
 
-		            String selectTableSQL = 
-		            		"INSERT INTO " + empTbl + " VALUES (" 
-		            				+ id + ", " + currentSSN + ", " + "'" + currentDOB + "'" + ", " 
-		            				+ "'" + currentName + "'" + ", " + "'" + currentAdd + "'" + ", " 
-		            				+ "'" + currentGender + "'" + ", " + currentSalary + ")";
+			            String selectTableSQL = 
+			            		"INSERT INTO " + empTbl + " VALUES (" 
+			            				+ id + ", " + currentSSN + ", " + "'" + currentDOB + "'" + ", " 
+			            				+ "'" + currentName + "'" + ", " + "'" + currentAdd + "'" + ", " 
+			            				+ "'" + currentGender + "'" + ", " + currentSalary + ")";
 
-		            dbConnection = getConnection();
-		            statement = dbConnection.createStatement();
+			            dbConnection = getConnection();
+			            statement = dbConnection.createStatement();
 
-		            statement.executeUpdate(selectTableSQL);
+			            statement.executeUpdate(selectTableSQL);
+			            
+			            String getLast = "SELECT * FROM " + empTbl + " ORDER BY ID DESC LIMIT 1";
+			            System.out.println("SENDING THIS: " + getLast);
+			            
+						offset = count;
+						int current = count + 1;
+						System.out.println("CURRENT: " + current);
+						txtpnEmp.setText(empView + current);
+						txtpnEmp.repaint();
+						 
+						ResultSet x = statement.executeQuery(getLast);
 		            
-		            String getLast = "SELECT * FROM " + empTbl + " ORDER BY ID DESC LIMIT 1";
-		            System.out.println("SENDING THIS: " + getLast);
-		            
-					offset = count;
-					int current = count + 1;
-					System.out.println("CURRENT: " + current);
-					txtpnEmp.setText(empView + current);
-					txtpnEmp.repaint();
-					 
-					ResultSet x = statement.executeQuery(getLast);
-	            
-                	while (x.next()) {
-                		
-                        String customerSSN = x.getString("ssn");
-                        String customerBDATE = x.getString("bdate");
-                        String customerName = x.getString("name");
-                        String customerAddress = x.getString("address");
-                        String customerSex = x.getString("sex");
-                        String customerSalary = x.getString("salary");
+	                	while (x.next()) {
+	                		
+	                        String customerSSN = x.getString("ssn");
+	                        String customerBDATE = x.getString("bdate");
+	                        String customerName = x.getString("name");
+	                        String customerAddress = x.getString("address");
+	                        String customerSex = x.getString("sex");
+	                        String customerSalary = x.getString("salary");
 
-                        ssnField.setText(customerSSN);
-                        ssnField.repaint();
-                        
-                        dobField.setText(customerBDATE);
-                        dobField.repaint();
-                        
-                        nameField.setText(customerName);
-                        nameField.repaint();
-                        
-                        addressField.setText(customerAddress);
-                        addressField.repaint();
+	                        ssnField.setText(customerSSN);
+	                        ssnField.repaint();
+	                        
+	                        dobField.setText(customerBDATE);
+	                        dobField.repaint();
+	                        
+	                        nameField.setText(customerName);
+	                        nameField.repaint();
+	                        
+	                        addressField.setText(customerAddress);
+	                        addressField.repaint();
 
-                        salaryField.setText(customerSalary);
-                        salaryField.repaint();
+	                        salaryField.setText(customerSalary);
+	                        salaryField.repaint();
 
-                        genderField.setText(customerSex);
-                        genderField.repaint();
-                        
-                        System.out.println("CURRENT EMP: " + currentEmp);
-                        
-                    }
+	                        genderField.setText(customerSex);
+	                        genderField.repaint();
+	                        
+	                        System.out.println("CURRENT EMP: " + currentEmp);
+	                        
+	                    }
 
-		        } catch (SQLException error) {
+			        } catch (SQLException error) {
 
-		            System.out.println(error.getMessage());
+			            System.out.println(error.getMessage());
 
-		        }
+			        }
+				}
+				
+				else {
+					final JPanel panel = new JPanel();
+					JOptionPane.showMessageDialog(panel, "Please enter all fields in the correct!", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+
+
 			}
         });
 
         JButton btnDelete = new JButton("Delete");
-        btnDelete.setBounds(312, 71, 112, 23);
+        btnDelete.setBounds(461, 71, 112, 23);
         getContentPane().add(btnDelete);
         btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -512,7 +524,7 @@ public class dbDemo extends JFrame {
         });
 
         JButton btnUpdate = new JButton("Update");
-        btnUpdate.setBounds(312, 102, 112, 23);
+        btnUpdate.setBounds(461, 102, 112, 23);
         getContentPane().add(btnUpdate);
         btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -564,7 +576,7 @@ public class dbDemo extends JFrame {
 
         // Clear Button
         JButton btnClear = new JButton("Clear");
-        btnClear.setBounds(312, 133, 112, 23);
+        btnClear.setBounds(461, 133, 112, 23);
         getContentPane().add(btnClear);
         btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -580,7 +592,6 @@ public class dbDemo extends JFrame {
         
         
         getContentPane().setLayout(null);
-
     }
 
     public Connection getConnection() throws SQLException {
@@ -631,6 +642,8 @@ public class dbDemo extends JFrame {
             "supervises int(3) NOT NULL, " +
             "PRIMARY KEY (id))";
 
+        
+
         String[] tables = {
             employeeString
         };
@@ -646,6 +659,16 @@ public class dbDemo extends JFrame {
                 return;
             }
         }
+        
+        String ssnUnique = "ALTER TABLE " + this.empTbl + " ADD UNIQUE(`ssn`)";
+        Statement statement = null;
+        try {
+			statement = conn.createStatement();
+			statement.executeUpdate(ssnUnique);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+        
 
     }
 
@@ -680,8 +703,9 @@ public class dbDemo extends JFrame {
         dbDemo f = new dbDemo();
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.pack();
-        f.setSize(450, 300);
+        f.setSize(598, 303);
         f.setResizable(false);
         f.setVisible(true);
     }
+
 }
