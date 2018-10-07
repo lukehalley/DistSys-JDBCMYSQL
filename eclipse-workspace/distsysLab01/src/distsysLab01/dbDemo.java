@@ -28,6 +28,9 @@ public class dbDemo extends JFrame {
     private JTextField salaryField;
     private JTextField genderField;
 	int offset = 0;
+	int currentEmp = 1;
+	String empView = "Viewing Employee Number: ";
+    String blank = "";
 
     // GUI
 
@@ -61,6 +64,54 @@ public class dbDemo extends JFrame {
         lblEmployeeDetails.setHorizontalAlignment(SwingConstants.CENTER);
         lblEmployeeDetails.setBounds(0, 0, 434, 37);
         getContentPane().add(lblEmployeeDetails);
+        
+        JTextPane txtpnEmp = new JTextPane();
+        txtpnEmp.setBackground(UIManager.getColor("Button.background"));
+        txtpnEmp.setText(empView + currentEmp);
+        txtpnEmp.setBounds(312, 168, 112, 82);
+        getContentPane().add(txtpnEmp);
+        
+        ssnField = new JTextField();
+        ssnField.setBounds(87, 41, 215, 20);
+        getContentPane().add(ssnField);
+        ssnField.setColumns(10);
+        
+        dobField = new JTextField();
+        dobField.setColumns(10);
+        dobField.setBounds(87, 72, 215, 20);
+        getContentPane().add(dobField);
+        
+        nameField = new JTextField();
+        nameField.setColumns(10);
+        nameField.setBounds(87, 103, 215, 20);
+        getContentPane().add(nameField);
+        
+        addressField = new JTextField();
+        addressField.setColumns(10);
+        addressField.setBounds(87, 134, 215, 20);
+        getContentPane().add(addressField);
+        
+        salaryField = new JTextField();
+        salaryField.setColumns(10);
+        salaryField.setBounds(87, 165, 215, 20);
+        getContentPane().add(salaryField);
+
+        genderField = new JTextField();
+        genderField.setColumns(10);
+        genderField.setBounds(87, 196, 215, 20);
+        getContentPane().add(genderField);
+        
+        JButton btnNext = new JButton("Next");
+        btnNext.setBounds(213, 227, 89, 23);
+        getContentPane().add(btnNext);
+        
+        JButton btnPrevious = new JButton("Previous");
+        btnPrevious.setBounds(87, 227, 89, 23);
+        getContentPane().add(btnPrevious);
+        
+        JButton btnAdd = new JButton("Add");
+        btnAdd.setBounds(312, 40, 112, 23);
+        getContentPane().add(btnAdd);
 
         // Loading first row
         try {
@@ -92,94 +143,39 @@ public class dbDemo extends JFrame {
                     String customerSex = rs.getString("sex");
                     String customerSalary = rs.getString("salary");
 
-                    ssnField = new JTextField();
-                    ssnField.setBounds(87, 41, 215, 20);
-                    getContentPane().add(ssnField);
-                    ssnField.setColumns(10);
                     ssnField.setText(customerSSN);
+                    ssnField.repaint();
                     
-                    dobField = new JTextField();
-                    dobField.setColumns(10);
-                    dobField.setBounds(87, 72, 215, 20);
-                    getContentPane().add(dobField);
                     dobField.setText(customerBDATE);
+                    dobField.repaint();
                     
-                    nameField = new JTextField();
-                    nameField.setColumns(10);
-                    nameField.setBounds(87, 103, 215, 20);
-                    getContentPane().add(nameField);
                     nameField.setText(customerName);
+                    nameField.repaint();
                     
-                    addressField = new JTextField();
-                    addressField.setColumns(10);
-                    addressField.setBounds(87, 134, 215, 20);
-                    getContentPane().add(addressField);
                     addressField.setText(customerAddress);
-                    
-                    salaryField = new JTextField();
-                    salaryField.setColumns(10);
-                    salaryField.setBounds(87, 165, 215, 20);
-                    getContentPane().add(salaryField);
+                    addressField.repaint();
+
                     salaryField.setText(customerSalary);
-                    
-                    genderField = new JTextField();
-                    genderField.setColumns(10);
-                    genderField.setBounds(87, 196, 215, 20);
-                    getContentPane().add(genderField);
+                    salaryField.repaint();
+
                     genderField.setText(customerSex);
-                    
+                    genderField.repaint();
 
                 }
             	
             } else {
-            	
-                String customerSSN = "";
-                String customerBDATE = "";
-                String customerName = "";
-                String customerAddress = "";
-                String customerSex = "";
-                String customerSalary = "";
 
-                ssnField = new JTextField();
-                ssnField.setBounds(87, 41, 215, 20);
-                getContentPane().add(ssnField);
-                ssnField.setColumns(10);
-                ssnField.setText(customerSSN);
+                ssnField.setText(blank);
                 
-
-                dobField = new JTextField();
-                dobField.setColumns(10);
-                dobField.setBounds(87, 72, 215, 20);
-                getContentPane().add(dobField);
-                dobField.setText(customerBDATE);
+                dobField.setText(blank);
                 
-
-                nameField = new JTextField();
-                nameField.setColumns(10);
-                nameField.setBounds(87, 103, 215, 20);
-                getContentPane().add(nameField);
-                nameField.setText(customerName);
+                nameField.setText(blank);
                 
+                addressField.setText(blank);
 
-                addressField = new JTextField();
-                addressField.setColumns(10);
-                addressField.setBounds(87, 134, 215, 20);
-                getContentPane().add(addressField);
-                addressField.setText(customerAddress);
-                
+                salaryField.setText(blank);
 
-                salaryField = new JTextField();
-                salaryField.setColumns(10);
-                salaryField.setBounds(87, 165, 215, 20);
-                getContentPane().add(salaryField);
-                salaryField.setText(customerSalary);
-                
-
-                genderField = new JTextField();
-                genderField.setColumns(10);
-                genderField.setBounds(87, 196, 215, 20);
-                getContentPane().add(genderField);
-                genderField.setText(customerSex);
+                genderField.setText(blank);
                 
             	
             }
@@ -191,8 +187,7 @@ public class dbDemo extends JFrame {
         }
         
         // Next and Previous buttons
-        JButton btnNext = new JButton("Next");
-        btnNext.setBounds(213, 227, 89, 23);
+
         btnNext.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent arg0) {
@@ -233,47 +228,27 @@ public class dbDemo extends JFrame {
                             String customerSex = rs.getString("sex");
                             String customerSalary = rs.getString("salary");
 
-                            ssnField = new JTextField();
-                            ssnField.setBounds(87, 41, 215, 20);
-                            getContentPane().add(ssnField);
-                            ssnField.setColumns(10);
-                            ssnField.setText("");
                             ssnField.setText(customerSSN);
+                            ssnField.repaint();
                             
-                            dobField = new JTextField();
-                            dobField.setColumns(10);
-                            dobField.setBounds(87, 72, 215, 20);
-                            getContentPane().add(dobField);
-                            dobField.setText("");
                             dobField.setText(customerBDATE);
+                            dobField.repaint();
                             
-                            nameField = new JTextField();
-                            nameField.setColumns(10);
-                            nameField.setBounds(87, 103, 215, 20);
-                            getContentPane().add(nameField);
-                            nameField.setText("");
                             nameField.setText(customerName);
+                            nameField.repaint();
                             
-                            addressField = new JTextField();
-                            addressField.setColumns(10);
-                            addressField.setBounds(87, 134, 215, 20);
-                            getContentPane().add(addressField);
-                            addressField.setText("");
                             addressField.setText(customerAddress);
-                            
-                            salaryField = new JTextField();
-                            salaryField.setColumns(10);
-                            salaryField.setBounds(87, 165, 215, 20);
-                            getContentPane().add(salaryField);
-                            salaryField.setText("");
+                            addressField.repaint();
+
                             salaryField.setText(customerSalary);
-                            
-                            genderField = new JTextField();
-                            genderField.setColumns(10);
-                            genderField.setBounds(87, 196, 215, 20);
-                            getContentPane().add(genderField);
-                            genderField.setText("");
+                            salaryField.repaint();
+
                             genderField.setText(customerSex);
+                            genderField.repaint();
+                            
+                            int customerID = rs.getInt("id");                            
+        		            txtpnEmp.setText(empView + customerID);
+        		            getContentPane().add(txtpnEmp);
                             
                         } 
                     } else {
@@ -288,9 +263,7 @@ public class dbDemo extends JFrame {
 
                 System.out.println("OFFSET: " + offset);
 
-                JButton btnPrevious = new JButton("Previous");
-                btnPrevious.setBounds(87, 227, 89, 23);
-                getContentPane().add(btnPrevious);
+
                 btnPrevious.addActionListener(new ActionListener() {
 
                     public void actionPerformed(ActionEvent arg0) {
@@ -327,48 +300,28 @@ public class dbDemo extends JFrame {
 		                                String customerAddress = rs.getString("address");
 		                                String customerSex = rs.getString("sex");
 		                                String customerSalary = rs.getString("salary");
-		
-		                                ssnField = new JTextField();
-		                                ssnField.setBounds(87, 41, 215, 20);
-		                                getContentPane().add(ssnField);
-		                                ssnField.setColumns(10);
-		                                ssnField.setText("");
+
 		                                ssnField.setText(customerSSN);
+		                                ssnField.repaint();
 		                                
-		                                dobField = new JTextField();
-		                                dobField.setColumns(10);
-		                                dobField.setBounds(87, 72, 215, 20);
-		                                getContentPane().add(dobField);
-		                                dobField.setText("");
 		                                dobField.setText(customerBDATE);
+		                                dobField.repaint();
 		                                
-		                                nameField = new JTextField();
-		                                nameField.setColumns(10);
-		                                nameField.setBounds(87, 103, 215, 20);
-		                                getContentPane().add(nameField);
-		                                nameField.setText("");
 		                                nameField.setText(customerName);
+		                                nameField.repaint();
 		                                
-		                                addressField = new JTextField();
-		                                addressField.setColumns(10);
-		                                addressField.setBounds(87, 134, 215, 20);
-		                                getContentPane().add(addressField);
-		                                addressField.setText("");
 		                                addressField.setText(customerAddress);
-		                                
-		                                salaryField = new JTextField();
-		                                salaryField.setColumns(10);
-		                                salaryField.setBounds(87, 165, 215, 20);
-		                                getContentPane().add(salaryField);
-		                                salaryField.setText("");
+		                                addressField.repaint();
+
 		                                salaryField.setText(customerSalary);
-		                                
-		                                genderField = new JTextField();
-		                                genderField.setColumns(10);
-		                                genderField.setBounds(87, 196, 215, 20);
-		                                getContentPane().add(genderField);
-		                                genderField.setText("");
+		                                salaryField.repaint();
+
 		                                genderField.setText(customerSex);
+		                                genderField.repaint();
+		                                
+		                                int customerID = rs.getInt("id");                            
+		            		            txtpnEmp.setText(empView + customerID);
+		            		            getContentPane().add(txtpnEmp);
 		
 		                            }
 	                            
@@ -389,11 +342,8 @@ public class dbDemo extends JFrame {
                 });
             }
         });
-        getContentPane().add(btnNext);
 
-        JButton btnAdd = new JButton("Add");
-        btnAdd.setBounds(312, 40, 112, 23);
-        getContentPane().add(btnAdd);
+        // Add button
         btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String currentSSN = ssnField.getText();
@@ -428,12 +378,17 @@ public class dbDemo extends JFrame {
 		            statement = dbConnection.createStatement();
 
 		            statement.executeUpdate(selectTableSQL);
+		            
 		            String getLast = "SELECT * FROM " + empTbl + " ORDER BY ID DESC LIMIT 1";
 		            System.out.println("SENDING THIS: " + getLast);
 		            
-		            offset = count - 1;
-		            
-		            ResultSet x = statement.executeQuery(getLast);
+					offset = count;
+					int current = count + 1;
+					System.out.println("CURRENT: " + current);
+					txtpnEmp.setText(empView + current);
+					txtpnEmp.repaint();
+					 
+					ResultSet x = statement.executeQuery(getLast);
 	            
                 	while (x.next()) {
                 		
@@ -444,47 +399,25 @@ public class dbDemo extends JFrame {
                         String customerSex = x.getString("sex");
                         String customerSalary = x.getString("salary");
 
-                        ssnField = new JTextField();
-                        ssnField.setBounds(87, 41, 215, 20);
-                        getContentPane().add(ssnField);
-                        ssnField.setColumns(10);
-                        ssnField.setText("");
                         ssnField.setText(customerSSN);
+                        ssnField.repaint();
                         
-                        dobField = new JTextField();
-                        dobField.setColumns(10);
-                        dobField.setBounds(87, 72, 215, 20);
-                        getContentPane().add(dobField);
-                        dobField.setText("");
                         dobField.setText(customerBDATE);
+                        dobField.repaint();
                         
-                        nameField = new JTextField();
-                        nameField.setColumns(10);
-                        nameField.setBounds(87, 103, 215, 20);
-                        getContentPane().add(nameField);
-                        nameField.setText("");
                         nameField.setText(customerName);
+                        nameField.repaint();
                         
-                        addressField = new JTextField();
-                        addressField.setColumns(10);
-                        addressField.setBounds(87, 134, 215, 20);
-                        getContentPane().add(addressField);
-                        addressField.setText("");
                         addressField.setText(customerAddress);
-                        
-                        salaryField = new JTextField();
-                        salaryField.setColumns(10);
-                        salaryField.setBounds(87, 165, 215, 20);
-                        getContentPane().add(salaryField);
-                        salaryField.setText("");
+                        addressField.repaint();
+
                         salaryField.setText(customerSalary);
-                        
-                        genderField = new JTextField();
-                        genderField.setColumns(10);
-                        genderField.setBounds(87, 196, 215, 20);
-                        getContentPane().add(genderField);
-                        genderField.setText("");
+                        salaryField.repaint();
+
                         genderField.setText(customerSex);
+                        genderField.repaint();
+                        
+                        System.out.println("CURRENT EMP: " + currentEmp);
                         
                     }
 
@@ -499,16 +432,155 @@ public class dbDemo extends JFrame {
         JButton btnDelete = new JButton("Delete");
         btnDelete.setBounds(312, 71, 112, 23);
         getContentPane().add(btnDelete);
+        btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			    int dialogButton = JOptionPane.YES_NO_OPTION;
+				int dialogResult = JOptionPane.showConfirmDialog (null, "Are you sure you want to delete this employee?","Warning", dialogButton);
+				if(dialogResult == JOptionPane.YES_OPTION){
+					String currentSSN = ssnField.getText();
+					try {
+	                    Connection dbConnection = null;
+	                    Statement statement = null;
+
+	                    dbConnection = getConnection();
+	                    
+			            String deleteBySSN = "DELETE FROM " + empTbl + " WHERE ssn=" + "'" + currentSSN  + "'";
+
+			            dbConnection = getConnection();
+			            statement = dbConnection.createStatement();
+			            statement.executeUpdate(deleteBySSN);
+			            
+	                    Statement s = dbConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+	                    ResultSet r = s.executeQuery("SELECT * FROM " + empTbl);
+	                    r.last();
+	                    int count = r.getRow();
+	                    r.beforeFirst();
+	                    System.out.println(count);
+	                    int id = count + 1;
+	                    System.out.println("ID: " + id + " Count: " + count);
+			            
+			            String getLast = "SELECT * FROM " + empTbl + " ORDER BY ID DESC LIMIT 1";
+			            System.out.println("SENDING THIS: " + getLast);
+			            
+						offset = count;
+						int current = count + 1;
+						System.out.println("CURRENT: " + current);
+						txtpnEmp.setText(empView + current);
+						txtpnEmp.repaint();
+						 
+						ResultSet x = statement.executeQuery(getLast);
+		            
+	                	while (x.next()) {
+	                		
+	                        String customerSSN = x.getString("ssn");
+	                        String customerBDATE = x.getString("bdate");
+	                        String customerName = x.getString("name");
+	                        String customerAddress = x.getString("address");
+	                        String customerSex = x.getString("sex");
+	                        String customerSalary = x.getString("salary");
+
+	                        ssnField.setText(customerSSN);
+	                        ssnField.repaint();
+	                        
+	                        dobField.setText(customerBDATE);
+	                        dobField.repaint();
+	                        
+	                        nameField.setText(customerName);
+	                        nameField.repaint();
+	                        
+	                        addressField.setText(customerAddress);
+	                        addressField.repaint();
+
+	                        salaryField.setText(customerSalary);
+	                        salaryField.repaint();
+
+	                        genderField.setText(customerSex);
+	                        genderField.repaint();
+	                        
+	                        System.out.println("CURRENT EMP: " + currentEmp);
+	                        
+	                    }
+
+			        } catch (SQLException error) {
+
+			            System.out.println(error.getMessage());
+
+			        }
+				}
+			}
+        });
 
         JButton btnUpdate = new JButton("Update");
         btnUpdate.setBounds(312, 102, 112, 23);
         getContentPane().add(btnUpdate);
+        btnUpdate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String currentSSN = ssnField.getText();
+				String currentDOB = dobField.getText();
+				String currentName = nameField.getText();
+				String currentAdd = addressField.getText();
+				String currentSalary = salaryField.getText();
+				String currentGender = genderField.getText();
+	
+				try {
+	                Connection dbConnection = null;
+	                Statement statement = null;
+	
+	                dbConnection = getConnection();
+		            statement = dbConnection.createStatement();
+		            
+                    String selectTableSQL = "SELECT * FROM " + empTbl + " ORDER BY id LIMIT 1 OFFSET " + offset;
+                    System.out.println("SENDING THIS: " + selectTableSQL);
+                    
+                    System.out.println("Offset: " + offset);
 
+                    ResultSet rs = statement.executeQuery(selectTableSQL);
+                    
+                    rs.next();
+                    
+                    System.out.println("BEFORE");
+		            String updateEmp = "UPDATE " + empTbl 
+		            		+ " SET ssn = " + "'" + currentSSN + "'"
+		            		+ ", bdate = " + "'" + currentDOB + "'"
+		            		+ ", name = " + "'" + currentName + "'"
+		            		+ ", address = " + "'" + currentAdd + "'"
+		            		+ ", sex = " + "'" + currentGender + "'"
+		            		+ ", salary = " + "'" + currentSalary + "'"
+		            		+ " WHERE ssn = " + "'" + rs.getString("ssn") + "'";
+		            System.out.println("SENDING THIS: " + updateEmp);
+		            System.out.println("AFTER");
+					 
+					statement.executeUpdate(updateEmp);
+	
+		        } catch (SQLException error) {
+	
+		            System.out.println(error.getMessage());
+	
+		        }
+			}
+		
+        });
+
+        // Clear Button
         JButton btnClear = new JButton("Clear");
         btnClear.setBounds(312, 133, 112, 23);
         getContentPane().add(btnClear);
+        btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+                ssnField.setText(blank);
+                dobField.setText(blank);
+                nameField.setText(blank);
+                addressField.setText(blank);
+                salaryField.setText(blank);
+                genderField.setText(blank);
+			}
+        	
+        });
+        
         
         getContentPane().setLayout(null);
+
     }
 
     public Connection getConnection() throws SQLException {
