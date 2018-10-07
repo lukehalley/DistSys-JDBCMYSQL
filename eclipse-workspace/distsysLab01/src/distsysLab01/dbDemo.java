@@ -433,16 +433,16 @@ public class dbDemo extends JFrame {
 		            
 		            offset = count - 1;
 		            
-		            ResultSet rs = statement.executeQuery(getLast);
+		            ResultSet x = statement.executeQuery(getLast);
 	            
-                	while (rs.next()) {
+                	while (x.next()) {
                 		
-                        String customerSSN = rs.getString("ssn");
-                        String customerBDATE = rs.getString("bdate");
-                        String customerName = rs.getString("name");
-                        String customerAddress = rs.getString("address");
-                        String customerSex = rs.getString("sex");
-                        String customerSalary = rs.getString("salary");
+                        String customerSSN = x.getString("ssn");
+                        String customerBDATE = x.getString("bdate");
+                        String customerName = x.getString("name");
+                        String customerAddress = x.getString("address");
+                        String customerSex = x.getString("sex");
+                        String customerSalary = x.getString("salary");
 
                         ssnField = new JTextField();
                         ssnField.setBounds(87, 41, 215, 20);
