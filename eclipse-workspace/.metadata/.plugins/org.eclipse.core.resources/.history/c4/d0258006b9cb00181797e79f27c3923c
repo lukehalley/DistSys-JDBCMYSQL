@@ -728,6 +728,7 @@ public class Dashboard extends JFrame {
 			// Create the project table
 			try {
 				this.executeUpdate(conn, s);
+				System.out.println("Created " + empTbl + " table");
 			} catch (SQLException e) {
 				System.err.println("ERROR: Could not create table");
 				e.printStackTrace();

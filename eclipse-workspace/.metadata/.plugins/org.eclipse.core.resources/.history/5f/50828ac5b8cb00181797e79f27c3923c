@@ -16,7 +16,6 @@
 // Verification of correct format when Updating Employee using regex.
 // User is taken to the Employee they just added for convinience
 // User is taken to previous Employee when they delete an Employee.
-// Fault tolerence in all code.
 
 package lhalley;
 
@@ -728,6 +727,7 @@ public class Dashboard extends JFrame {
 			// Create the project table
 			try {
 				this.executeUpdate(conn, s);
+				System.out.println("Created " + empTbl + " table");
 			} catch (SQLException e) {
 				System.err.println("ERROR: Could not create table");
 				e.printStackTrace();
