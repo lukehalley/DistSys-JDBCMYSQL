@@ -39,6 +39,7 @@
 // Initialize database connection pool
 // TODO: Optimize table rendering for large datasets
 
+// TODO: Add try-catch blocks for SQLException handling
 package lhalley;
 
 // Handle connection failures gracefully with retry logic
