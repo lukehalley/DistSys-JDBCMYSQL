@@ -1,6 +1,7 @@
 # DistSys-JDBCMYSQL
 
-## Luke Halley - St. Num: 2007180 - 09/10/2018
+## Luke Halley - 
+## St. Num: 2007180
 ### Dist. Systems Assignment 1 JDBC / MySQL File
 
 ### Features: 
