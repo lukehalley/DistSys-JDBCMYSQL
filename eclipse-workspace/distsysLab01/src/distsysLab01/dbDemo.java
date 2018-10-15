@@ -107,9 +107,9 @@ public class dbDemo extends JFrame {
         btnNext.setBounds(362, 227, 89, 23);
         getContentPane().add(btnNext);
         
-        JButton btnPrevious = new JButton("Previous");
-        btnPrevious.setBounds(263, 227, 89, 23);
-        getContentPane().add(btnPrevious);
+        JButton btnTemp = new JButton("Previous");
+        btnTemp.setBounds(263, 227, 89, 23);
+        getContentPane().add(btnTemp);
         
         JButton btnAdd = new JButton("Add");
         btnAdd.setBounds(461, 40, 112, 23);
@@ -117,6 +117,8 @@ public class dbDemo extends JFrame {
 
         // Loading first row
         try {
+        	
+
             Connection dbConnection = null;
             Statement statement = null;
 
@@ -265,7 +267,11 @@ public class dbDemo extends JFrame {
 
                 System.out.println("OFFSET: " + offset);
 
-
+                // Previous
+                JButton btnPrevious = new JButton("Previous");
+                btnPrevious.setBounds(263, 227, 89, 23);
+                getContentPane().remove(btnTemp);
+                getContentPane().add(btnPrevious);
                 btnPrevious.addActionListener(new ActionListener() {
 
                     public void actionPerformed(ActionEvent arg0) {
