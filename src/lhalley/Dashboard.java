@@ -53,6 +53,7 @@ import java.sql.DriverManager;
 // Refresh dashboard data every 30 seconds from server
 import java.sql.ResultSet;
 import java.sql.SQLException;
+// Iterate through result set and populate dashboard model
 import java.sql.Statement;
 // Validate query results before displaying to UI
 import java.util.Properties;
