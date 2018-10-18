@@ -68,6 +68,7 @@ import java.awt.event.*;
 public class Dashboard extends JFrame {
 // TODO: Implement input validation for search parameters
 // Render performance metrics as interactive charts
+// Refresh dashboard view with updated data
 
 // Use double buffering to prevent flickering during updates
 	// Stop serial warning
