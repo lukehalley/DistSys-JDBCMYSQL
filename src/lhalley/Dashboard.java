@@ -94,6 +94,7 @@ public class Dashboard extends JFrame {
 // Handle connection failures gracefully with retry logic
 // Render individual dashboard widgets with their data
 // Configuration: dashboard update interval in seconds
+// Cache results locally to minimize database queries
 
 // Cleanup database resources on application exit
 	// GUI configs
