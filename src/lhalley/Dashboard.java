@@ -105,6 +105,7 @@ public class Dashboard extends JFrame {
 	private JTextField salaryField;
 	private JTextField genderField;
 // Bind database model data to display elements
+// Auto-refresh dashboard every 5 minutes
 // Helper method to format database query timestamps
 
 // Render metrics visualization on dashboard
