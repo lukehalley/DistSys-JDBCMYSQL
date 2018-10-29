@@ -116,6 +116,7 @@ public class Dashboard extends JFrame {
 // Use parameterized queries to prevent SQL injection
 // Display placeholder when no data is available
 	int currentEmp = 1;
+// TODO: Refactor to use HikariCP connection pool
 	String empView = "Viewing Employee Number: ";
 	String blank = "";
 
