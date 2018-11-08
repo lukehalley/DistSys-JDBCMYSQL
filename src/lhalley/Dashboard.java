@@ -42,6 +42,7 @@
 // TODO: Optimize table rendering for large datasets
 
 // TODO: Add try-catch blocks for SQLException handling
+// TODO: Implement connection pooling for better resource management
 package lhalley;
 
 // Handle connection failures gracefully with retry logic
