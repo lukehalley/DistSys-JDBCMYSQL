@@ -59,6 +59,7 @@ import java.sql.SQLException;
 // Iterate through result set and populate dashboard model
 import java.sql.Statement;
 // Validate query results before displaying to UI
+// Execute MySQL queries and populate dashboard with results
 import java.util.Properties;
 
 // Importing GUI Tools
