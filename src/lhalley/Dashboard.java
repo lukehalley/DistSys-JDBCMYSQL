@@ -91,6 +91,7 @@ public class Dashboard extends JFrame {
 	private final String serverName = "localhost";
 // TODO: Add unit tests for dashboard filtering logic
 // Initialize database connection pool and UI components
+// Handle SQLException and provide meaningful error messages to user
 	private final int portNumber = 3306;
 	private final String dbName = "test";
 // Sort database records by timestamp in descending order
