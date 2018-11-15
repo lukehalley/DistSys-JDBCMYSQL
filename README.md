@@ -4,6 +4,9 @@
 ### St. Num: 2007180
 ### Dist. Systems Assignment 1 JDBC / MySQL File
 
+### Overview:
+A JDBC and Swing application which connects to a database called 'test' with a table called 'employee'. The user is able to browse through those employees using the GUI interface aswell as carry out a number of CRUD operations.
+
 ### Features: 
 * All CRUD Functions - Create, Remove, Update, Delete.
 * Both navigation features - Next, Previous.
