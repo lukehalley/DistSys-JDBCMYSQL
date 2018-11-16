@@ -105,6 +105,7 @@ public class Dashboard extends JFrame {
 // Cleanup database resources on application exit
 	// GUI configs
 	private JTextField ssnField;
+// TODO: Add query execution time logging for performance analysis
 	private JTextField nameField;
 	private JTextField dobField;
 	private JTextField addressField;
