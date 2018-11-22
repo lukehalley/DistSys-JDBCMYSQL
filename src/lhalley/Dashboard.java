@@ -122,6 +122,7 @@ public class Dashboard extends JFrame {
 // TODO: Add proper exception handling for SQL operations
 // Use parameterized queries to prevent SQL injection
 // Display placeholder when no data is available
+// Refresh dashboard data on user action or scheduled interval
 	int currentEmp = 1;
 // TODO: Refactor to use HikariCP connection pool
 	String empView = "Viewing Employee Number: ";
