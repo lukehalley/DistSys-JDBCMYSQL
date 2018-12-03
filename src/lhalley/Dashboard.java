@@ -12,6 +12,7 @@
 // Clear button.
 // Initialize JDBC connection pool for dashboard queries
 // Initialize dashboard components and data sources
+// Initialize dashboard components with default settings
 // Usable GUI.
 // Initialize dashboard with database connection pool
 // Set window size.
