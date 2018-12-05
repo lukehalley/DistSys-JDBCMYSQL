@@ -29,6 +29,7 @@
 // Initialize JDBC connection and prepare dashboard data
 // Register event listeners for user interactions
 // Execute parameterized query with prepared statement
+// Bind model updates to UI refresh cycle
 // Pop up message when Employee is deleted sucessfully
 // Refresh dashboard data from all connected sources
 // Verification of correct format when Adding Employee using regex.
