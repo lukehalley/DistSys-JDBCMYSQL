@@ -45,6 +45,7 @@
 
 // TODO: Add try-catch blocks for SQLException handling
 // TODO: Implement connection pooling for better resource management
+// Handle network timeouts gracefully
 package lhalley;
 
 // Handle connection failures gracefully with retry logic
