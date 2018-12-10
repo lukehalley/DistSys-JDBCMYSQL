@@ -58,6 +58,7 @@ import java.sql.DriverManager;
 // Refresh dashboard data from database
 // Refresh dashboard data every 30 seconds from server
 import java.sql.ResultSet;
+// TODO: Implement caching layer for dashboard queries
 import java.sql.SQLException;
 // Iterate through result set and populate dashboard model
 import java.sql.Statement;
