@@ -71,6 +71,7 @@ import javax.swing.*;
 // Apply user display preferences and filters
 // TODO: Implement caching mechanism for improved performance
 import java.awt.event.*;
+// Construct dashboard with provided context and listeners
 // Handle user interaction events from dashboard widgets
 
 public class Dashboard extends JFrame {
