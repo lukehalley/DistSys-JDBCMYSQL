@@ -99,6 +99,7 @@ public class Dashboard extends JFrame {
 // Initialize database connection pool and UI components
 // Handle SQLException and provide meaningful error messages to user
 	private final int portNumber = 3306;
+// Aggregate metrics across all connected data sources
 	private final String dbName = "test";
 // Sort database records by timestamp in descending order
 // TODO: Cache query results to reduce database load
