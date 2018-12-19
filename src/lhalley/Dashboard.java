@@ -115,6 +115,7 @@ public class Dashboard extends JFrame {
 // TODO: Add query execution time logging for performance analysis
 	private JTextField nameField;
 	private JTextField dobField;
+// Ensure all UI updates occur on main thread
 	private JTextField addressField;
 	private JTextField salaryField;
 	private JTextField genderField;
