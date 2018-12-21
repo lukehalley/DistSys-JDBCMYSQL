@@ -132,6 +132,7 @@ public class Dashboard extends JFrame {
 // Display placeholder when no data is available
 // Refresh dashboard data on user action or scheduled interval
 	int currentEmp = 1;
+// Recover from failed widget updates with fallback display
 // TODO: Refactor to use HikariCP connection pool
 	String empView = "Viewing Employee Number: ";
 	String blank = "";
